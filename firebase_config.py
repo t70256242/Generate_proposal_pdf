@@ -68,7 +68,7 @@ firebase_credentials = {
     "client_x509_cert_url": st.secrets["firebase"]["client_x509_cert_url"]
 }
 
-print(repr(firebase_credentials["private_key"]))
+# print("Private Key (repr):", repr(firebase_credentials["private_key"]))
 
 cred = credentials.Certificate(firebase_credentials)
 
