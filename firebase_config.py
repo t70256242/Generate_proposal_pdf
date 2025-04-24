@@ -59,7 +59,7 @@ firebase_credentials = {
     "type": st.secrets["firebase"]["type"],
     "project_id": st.secrets["firebase"]["project_id"],
     "private_key_id": st.secrets["firebase"]["private_key_id"],
-    "private_key": st.secrets["firebase"]["private_key"],  # <- no replace() here
+    "private_key": st.secrets["firebase"]["private_key"].replace("\\n", "\n"),  # <- no replace() here
     "client_email": st.secrets["firebase"]["client_email"],
     "client_id": st.secrets["firebase"]["client_id"],
     "auth_uri": st.secrets["firebase"]["auth_uri"],
@@ -68,6 +68,7 @@ firebase_credentials = {
     "client_x509_cert_url": st.secrets["firebase"]["client_x509_cert_url"]
 }
 
+print(repr(firebase_credentials["private_key"]))
 
 cred = credentials.Certificate(firebase_credentials)
 
