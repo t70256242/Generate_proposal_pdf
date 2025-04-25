@@ -124,13 +124,11 @@ def get_merged_pdf_preview(file_path, page_num=3):
 def next_page():
     st.session_state.page += 1
     st.rerun()
-    # st.experimental_rerun()
 
 
 def prev_page():
     st.session_state.page -= 1
     st.rerun()
-    # st.experimental_rerun()
 
 
 def proposal_session():
