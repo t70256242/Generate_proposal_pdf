@@ -123,14 +123,14 @@ def get_merged_pdf_preview(file_path, page_num=3):
 
 def next_page():
     st.session_state.page += 1
-    # st.rerun()
-    st.experimental_rerun()
+    st.rerun()
+    # st.experimental_rerun()
 
 
 def prev_page():
     st.session_state.page -= 1
-    # st.rerun()
-    st.experimental_rerun()
+    st.rerun()
+    # st.experimental_rerun()
 
 
 def proposal_session():
@@ -209,11 +209,18 @@ def proposal_session():
         #     st.write(f"You selected {selected_pdf}")
         # else:
         #     st.write("No index Template available")
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col1:
+            if st.button("Previous"):
+                prev_page()
+        with col3:
+            if st.button("Next"):
+                next_page()
 
-        if st.button("Next"):
-            next_page()
-        if st.button("Previous"):
-            prev_page()
+        # if st.button("Next"):
+        #     next_page()
+        # if st.button("Previous"):
+        #     prev_page()
 
         # if st.button("Next", on_click=next_page):  # Use on_click parameter
         #     pass  # The callback already handles the navigation
