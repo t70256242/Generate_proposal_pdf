@@ -26,8 +26,8 @@ def login():
             user = auth.sign_in_with_email_and_password(email, password)
             st.session_state.user = user
             st.sidebar.success("Login successful!")
-            # st.rerun()
-            st.experimental_rerun()
+            st.rerun()
+
         except Exception as e:
             st.sidebar.error(f"Login failed: {str(e)}")
 
@@ -36,8 +36,8 @@ def login():
 def logout():
     st.session_state.user = None
     st.sidebar.success("Logged out successfully!")
-    # st.rerun()
-    st.experimental_rerun()
+    st.rerun()
+
 
 
 # def admin_panel():
