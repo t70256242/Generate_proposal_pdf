@@ -128,7 +128,7 @@ def render_template_expander(template_id, template_data, selected_for_delete, fi
             st.write("**Preview:**")
             preview_result = generate_pdf_preview(bucket, template_data.get('filename'), is_index=is_index)
             if isinstance(preview_result, Image.Image):
-                st.image(preview_result, use_column_width=True)
+                st.image(preview_result, use_container_width=True)
             else:
                 st.warning(preview_result)
 

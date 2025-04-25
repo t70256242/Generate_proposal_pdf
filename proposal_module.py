@@ -246,7 +246,7 @@ def proposal_session():
         if all_pages:
             # for i, img in enumerate(all_pages):
             #     st.image(img, caption=f"Page {i + 1}", use_column_width=True)
-            st.image(all_pages, use_column_width=True)
+            st.image(all_pages, use_container_width=True)
             # use_container_width = True
         else:
             st.warning("No pages found or unable to render PDF.")
