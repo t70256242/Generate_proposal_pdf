@@ -54,6 +54,7 @@ def fetch_index_templates(bucket, firestore_db, doc_type="Proposal"):
         st.error(f"Failed to fetch index templates: {str(e)}")
         return []
 
+
 def fetch_proposal_templates(bucket, firestore_db):
     try:
         # Query templates with doc_type "Proposal"
@@ -134,7 +135,6 @@ def prev_page():
 def proposal_session():
     if "proposal_templates" not in st.session_state:
         st.session_state.proposal_templates = fetch_proposal_templates(bucket, firestore_db)
-        # st.write("Proposal templates loaded:", len(st.session_state.proposal_templates))
 
     if "proposal_index_templates" not in st.session_state:
         # st.session_state.proposal_index_templates = fetch_index_templates(bucket, firestore_db, doc_type="Proposal")
@@ -196,7 +196,7 @@ def proposal_session():
 
             if selected_pdf:
                 st.image(pdf_previews[selected_pdf])
-                st.write(f"You selected {selected_pdf}")
+                # st.write(f"You selected {selected_pdf}")
 
         # pdf_previews = {file: get_pdf_preview(file) for file in st.session_state.proposal_index_templates}
         # selected_pdf = st.selectbox("Choose your Template", list(pdf_previews.keys()))

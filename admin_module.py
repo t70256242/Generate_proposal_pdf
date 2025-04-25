@@ -160,7 +160,7 @@ def handle_bulk_delete(selected_ids, firestore_db, is_index=False):
             except Exception as e:
                 st.error(f"Failed to delete {template_type.lower()} {t_id}: {str(e)}")
         st.success(f"Deleted {len(selected_ids)} {template_type.lower()}{'s' if len(selected_ids) != 1 else ''}.")
-        st.experimental_rerun()
+        st.rerun()
 
 
 def render_template_management_tab(firestore_db, document_types, bucket, is_index=False):
