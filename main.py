@@ -15,7 +15,6 @@ from streamlit_sortables import sort_items
 from admin_module import render_upload_tab, render_template_management_tab
 
 
-# Login function using Pyrebase
 def login():
     st.sidebar.subheader("Admin Login")
     email = st.sidebar.text_input("Email")
@@ -32,28 +31,11 @@ def login():
             st.sidebar.error(f"Login failed: {str(e)}")
 
 
-# Logout function
 def logout():
     st.session_state.user = None
     st.sidebar.success("Logged out successfully!")
     st.rerun()
 
-
-
-# def admin_panel():
-#     st.header("📤 Admin Dashboard")
-#
-#     if st.sidebar.button("🚪 Logout"):
-#         logout()
-#
-#     tab1, tab2 = st.tabs(["📤 Upload Templates", "📋 Template Management"])
-#
-#     with tab1:
-#         render_upload_tab(bucket, firestore_db, st.session_state.user["email"], DOCUMENT_TYPES)
-#
-#     with tab2:
-#         # render_template_management_tab(firestore_db, DOCUMENT_TYPES)
-#         render_template_management_tab(firestore_db, DOCUMENT_TYPES, bucket)
 
 def admin_panel():
     st.header("📤 Admin Dashboard")
@@ -93,8 +75,6 @@ DOCUMENT_TYPES = [
     "API Access Agreement",
     "Maintenance Agreement"
 ]
-ADMIN_EMAILS = ["admin@example.com", "testing@gmail.com"]
-
 
 if "document_type" not in st.session_state:
     st.session_state.document_type = "Proposal"
@@ -120,13 +100,12 @@ if st.session_state.document_type == "Proposal":
 
 if is_admin:
     if st.session_state.user:
-        # Verify the user is actually an admin
+
         try:
-            # Get fresh user data
             user = auth.get_account_info(st.session_state.user['idToken'])
             email = user['users'][0]['email']
 
-            if email in ADMIN_EMAILS:
+            if email in st.secrets["custom"]["ADMIN_EMAILS"]:
                 admin_panel()
             else:
                 st.sidebar.error("Not an admin account")

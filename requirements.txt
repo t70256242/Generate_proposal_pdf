@@ -9,6 +9,7 @@ PyPDF2>=3.0.0
 python-docx>=0.8.11
 docx2pdf>=0.1.8
 streamlit_sortables>=0.3.1
+pdf2docx>=0.5.8
 
 # Firebase
 firebase-admin>=6.0.0
